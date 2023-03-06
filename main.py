@@ -42,8 +42,99 @@ api_key='a8d33780a6f0298df2a9dd731bd6b09d'
 #    ''')
 #    return testprint
 #    print(layout['left'])
+
+def weatherIcon(weth_json):
+    weathicon=weth_json['weather'][0]['main']
+    if weathicon=='Rain':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         rain
+           ''')
+        return weathericon
+    elif weathicon=='Sunny':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         sunny
+           ''')
+        return weathericon
+    elif weatherIcon=='Snow':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
+    elif weatherIcon=='Snow':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
+    elif weatherIcon=='Snow':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
+    elif weatherIcon=='Snow':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
+    elif weatherIcon=='Snow':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
+    elif weatherIcon=='Snow':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
+    elif weatherIcon=='Snow':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
+    elif weatherIcon=='Snow':
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
+    else:
+        weathericon=Table.grid(padding=2)
+        weathericon.add_column(style='blue',justify='left')
+        weathericon.add_column(no_wrap=True)
+        weathericon.add_row('''
+         snow
+           ''')
+        return weathericon
 def weatherPrint(temp_units,lat,lon,api_key,city_json) :
-    if temp_units==1:
+    if temp_units=='1':
         weth_req=req.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={api_key}')
         weth_json=weth_req.json()        
         weatherprint=Table.grid(padding=2)
@@ -54,14 +145,15 @@ def weatherPrint(temp_units,lat,lon,api_key,city_json) :
         [bold]Weather: [/bold]{weth_json['weather'][0]['main']}
         [bold]Description: [/bold]{weth_json["weather"][0]['description']}
         [bold]Tempetur: [/bold]{str(weth_json['main']['temp'])} C
-        [bold]Feels like: [/bold]{str(weth_json['main']['feels_like'])}
-        [bold]Tempetur minimum: [/bold]{str(weth_json['main']['temp_min'])}
-        [bold]Tempetur max: [/bold]{str(weth_json['main']['temp_max'])}
-        [bold]Pressuer: [/bold]{str(weth_json['main']['pressure'])}
-        [bold]Humidity: [/bold]{str(weth_json['main']['humidity'])}''')
+        [bold]Feels like: [/bold]{str(weth_json['main']['feels_like'])} C
+        [bold]Tempetur minimum: [/bold]{str(weth_json['main']['temp_min'])} C
+        [bold]Tempetur max: [/bold]{str(weth_json['main']['temp_max'])} C
+        [bold]Pressuer: [/bold]{str(weth_json['main']['pressure'])} hPa
+        [bold]Humidity: [/bold]{str(weth_json['main']['humidity'])}%''')
         layout['right'].update(weatherprint)
+        layout['left'].update(weatherIcon(weth_json))
         print(layout)
-    if temp_units==2:
+    if temp_units=='2':
         weth_req=req.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={api_key}')
         weth_json=weth_req.json() 
         weatherprint=Table.grid(padding=2)
@@ -71,13 +163,14 @@ def weatherPrint(temp_units,lat,lon,api_key,city_json) :
         [bold]City: [/bold]{city_json[0]['name']}
         [bold]Weather: [/bold]{weth_json['weather'][0]['main']}
         [bold]Description: [/bold]{weth_json["weather"][0]['description']}
-        [bold]Tempetur: [/bold]{str(weth_json['main']['temp'])} C
-        [bold]Feels like: [/bold]{str(weth_json['main']['feels_like'])}
-        [bold]Tempetur minimum: [/bold]{str(weth_json['main']['temp_min'])}
-        [bold]Tempetur max: [/bold]{str(weth_json['main']['temp_max'])}
-        [bold]Pressuer: [/bold]{str(weth_json['main']['pressure'])}
-        [bold]Humidity: [/bold]{str(weth_json['main']['humidity'])}''')
+        [bold]Tempetur: [/bold]{str(weth_json['main']['temp'])} F
+        [bold]Feels like: [/bold]{str(weth_json['main']['feels_like'])} F
+        [bold]Tempetur minimum: [/bold]{str(weth_json['main']['temp_min'])} F
+        [bold]Tempetur max: [/bold]{str(weth_json['main']['temp_max'])} F
+        [bold]Pressuer: [/bold]{str(weth_json['main']['pressure'])} hPa
+        [bold]Humidity: [/bold]{str(weth_json['main']['humidity'])}%''')
         layout['right'].update(weatherprint)
+        layout['left'].update(weatherIcon(weth_json))
         print(layout)
     else:
         print('You didn\'t choose one of the options')
