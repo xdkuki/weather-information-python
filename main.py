@@ -1,4 +1,5 @@
 import requests as req
+from api_key import API_key
 from rich import print
 from rich.panel import Panel
 from rich.console import Console, Group
@@ -17,7 +18,7 @@ layout.split_row(
     
 )
 print(layout)
-api_key='a8d33780a6f0298df2a9dd731bd6b09d'
+api_key=API_key()
 #def test():
 #    testprint=Table.grid(padding=1)
 #    testprint.add_column(style='red')
@@ -172,8 +173,7 @@ def weatherPrint(temp_units,lat,lon,api_key,city_json) :
         layout['right'].update(weatherprint)
         layout['left'].update(weatherIcon(weth_json))
         print(layout)
-    else:
-        print('You didn\'t choose one of the options')
+    
 
 
 
@@ -186,18 +186,6 @@ def main(api_key):
     lon=str(city_json[0]['lon'])
 
     weatherPrint(temp_units,lat,lon,api_key,city_json)
-
-#if temp_units=='1':
-#    weth_req=req.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={api_key}')
-#    weth_json=weth_req.json()
-#    weatherPrint()
-#elif temp_units=='2':
-#    weth_req=req.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=imperial&appid={api_key}')
-#    weth_json=weth_req.json()
-#    #layout['left'].update(test())
-#    layout['right'].update(weatherPrint())
-#    print(layout)
-#    #test()
 
 
 main(api_key)
